@@ -100,18 +100,24 @@ void PrintWordsReverse( TrieNode *current, char word[], int level)
 {
     if (current->isEndOfWord == 1 && current->letter!=' ')//is the start && isn't the root
     {
-        word[level]=current->letter;
+         if(current->letter>='a'&&current->letter<='z'){
+            word[level] = current->letter;
+            }
         word[level+1]='\0';
         printf("%s ", word); //print the line as ask
-        printf("%lu\n ", current->count);
+        printf("%lu\n", current->count);
     }
 
     for (int i = ALPHABET_SIZE - 1; i >= 0; i--)
     {
         if (current->children[i])
         {
+            int add=0;
+            if(current->letter>='a'&&current->letter<='z'){
             word[level] = current->letter;
-            PrintWordsReverse(current->children[i], word, level+1);
+            add=1;
+            }
+            PrintWordsReverse(current->children[i], word, level+add);
         }
     }
 }
