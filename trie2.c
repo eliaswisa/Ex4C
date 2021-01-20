@@ -81,7 +81,7 @@ void PrintWords( TrieNode *current, char word[], int level)
         word[level]=current->letter;
         word[level+1] = '\0';
 
-        printf("%s ", word); //print the line as ask
+        printf("%s ", (word+1)); //print the line as ask
         printf("%lu\n", current->count);
     }
     
